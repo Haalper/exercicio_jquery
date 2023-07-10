@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+    
+    <style>
+        .tarefa-concluida {
+            text-decoration: line-through;
+        }
+
+        li,
+        button {
+            cursor: pointer;
+        }
+
+        li {
+            font-size: 18px;
+            width: 0;
+            white-space: nowrap;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            font-family: sans-serif;
+        }
+
+        button {
+            height: 35px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        input {
+            height: 25px;
+            margin-right: 5px;
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Lista de Tarefas</h1>
+        <input type="text" id="tarefa" placeholder="Nome da atividade">
+        <button id="cadastrarBtn">Cadastrar</button>
+        <ul id="listaTarefas"></ul> 
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#cadastrarBtn').click(function() { 
+                const Tarefa = $('#tarefa').val();
+                const Linha = $('<li></li>').text(Tarefa);
+                $(Linha).appendTo('#listaTarefas');
+                
+                $('#tarefa').val('');
+            });
+            
+            $('#listaTarefas').on('click', 'li', function() {
+                $(this).toggleClass('tarefa-concluida');
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
